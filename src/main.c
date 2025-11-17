@@ -36,19 +36,19 @@ void MusicPlayeScene(MusicList* musicList)
         if (timePlayed >= 0.999f)
         {
             StopMusicStream(musicList->list[currentTrack]);
-            currentTrack = limit_value(currentTrack + 1, musicList->length - 1, 0);
+            currentTrack = limitValue(currentTrack + 1, musicList->length - 1, 0);
             startPlaying = true;
         }
         else if (IsKeyPressed(KEY_RIGHT))
         {
             StopMusicStream(musicList->list[currentTrack]);
-            currentTrack = limit_value(currentTrack + 1, musicList->length - 1, 0);
+            currentTrack = limitValue(currentTrack + 1, musicList->length - 1, 0);
             startPlaying = true;
         }
         else if (IsKeyPressed(KEY_LEFT))
         {
             StopMusicStream(musicList->list[currentTrack]);
-            currentTrack = limit_value(currentTrack - 1, musicList->length - 1, 0);
+            currentTrack = limitValue(currentTrack - 1, musicList->length - 1, 0);
             startPlaying = true;
         }
 

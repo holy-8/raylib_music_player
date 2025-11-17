@@ -1,7 +1,7 @@
 #include <math.h>
 
 
-int limit_value(int value, int highest, int lowest)
+int limitValue(int value, int highest, int lowest)
 {
     if (value > highest)
         return lowest;

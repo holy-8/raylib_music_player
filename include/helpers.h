@@ -1,7 +1,7 @@
 #pragma once
 
 
-int limit_value(int value, int highest, int lowest);
+int limitValue(int value, int highest, int lowest);
 
 int getMinutes(float timePlayed);
 
