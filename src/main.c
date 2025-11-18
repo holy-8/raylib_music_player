@@ -8,7 +8,7 @@ void MusicPlayeScene(MusicList* musicList)
 {
     int currentTrack = 0;
 
-    bool pause = false;
+    bool isPaused = false;
     bool startPlaying = true;
 
     float currentDuration = 0;
@@ -38,25 +38,28 @@ void MusicPlayeScene(MusicList* musicList)
             StopMusicStream(musicList->list[currentTrack]);
             currentTrack = limitValue(currentTrack + 1, musicList->length - 1, 0);
             startPlaying = true;
+            isPaused = false;
         }
         else if (IsKeyPressed(KEY_RIGHT))
         {
             StopMusicStream(musicList->list[currentTrack]);
             currentTrack = limitValue(currentTrack + 1, musicList->length - 1, 0);
             startPlaying = true;
+            isPaused = false;
         }
         else if (IsKeyPressed(KEY_LEFT))
         {
             StopMusicStream(musicList->list[currentTrack]);
             currentTrack = limitValue(currentTrack - 1, musicList->length - 1, 0);
             startPlaying = true;
+            isPaused = false;
         }
 
         if (IsKeyPressed(KEY_SPACE))
         {
-            pause = !pause;
+            isPaused = !isPaused;
 
-            if (pause)
+            if (isPaused)
                 PauseMusicStream(musicList->list[currentTrack]);
             else
                 ResumeMusicStream(musicList->list[currentTrack]);
@@ -123,7 +126,8 @@ int main(void)
     InitAudioDevice();
     SetTargetFPS(60);
 
-    MusicList* musicList = MusicListLoad("music/");
+    char* validExtensions[2] = {".mp3", ".ogg"};
+    MusicList* musicList = MusicListLoad("music/", validExtensions, 2);
 
     if (musicList->length <= 0)
         NoMusicScene(musicList);
